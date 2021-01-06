@@ -1,0 +1,25 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+
+
+    public static void main(String[] args) {
+	// write your code here
+
+        Scanner scannerMortgage= new Scanner(System.in);
+        System.out.print("Years: ");
+        int years = scannerMortgage.nextInt();
+
+        int n = years * 12;
+        System.out.print("Rate: ");
+        double percentrate = scannerMortgage.nextDouble();
+
+        double rate = percentrate/100;
+        System.out.print("Principal: ");
+        int principal= scannerMortgage.nextInt();
+
+        double payment= principal * ((rate*(Math.pow((1+rate),n)))/(Math.pow((1+rate),n)-1));
+        double rpayment=payment*100/100;
+        System.out.println("Monthly Payment: "+ rpayment);
+    }
+}
