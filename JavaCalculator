@@ -14,7 +14,7 @@ public class Main {
         System.out.print("Rate: ");
         double percentrate = scannerMortgage.nextDouble();
 
-        double rate = percentrate/100;
+        double rate = percentrate/100/12;
         System.out.print("Principal: ");
         int principal= scannerMortgage.nextInt();
 
