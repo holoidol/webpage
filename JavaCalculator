@@ -19,7 +19,7 @@ public class Main {
         int principal= scannerMortgage.nextInt();
 
         double payment= principal * ((rate*(Math.pow((1+rate),n)))/(Math.pow((1+rate),n)-1));
-        double rpayment=payment*100/100;
+        double rpayment=Math.round(payment*100)/100;
         System.out.println("Monthly Payment: "+ rpayment);
     }
 }
