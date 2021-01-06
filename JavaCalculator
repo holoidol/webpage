@@ -1,13 +1,13 @@
-package com.company;
+import java.text.NumberFormat;
 import java.util.Scanner;
 public class Main {
 
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
 
         Scanner scannerMortgage= new Scanner(System.in);
-        System.out.print("Years: ");
+        System.out.print("Period in Months: ");
         int years = scannerMortgage.nextInt();
 
         int n = years * 12;
@@ -18,8 +18,13 @@ public class Main {
         System.out.print("Principal: ");
         int principal= scannerMortgage.nextInt();
 
-        double payment= principal * ((rate*(Math.pow((1+rate),n)))/(Math.pow((1+rate),n)-1));
+        //rate needs to be divided by 100 and 12(months)
+
+        double payment= principal * (rate*(Math.pow((1+rate),n)))/(Math.pow((1+rate),n)-1);
         double rpayment=Math.round(payment*100)/100;
-        System.out.println("Monthly Payment: "+ rpayment);
+        NumberFormat formatPayment = NumberFormat.getCurrencyInstance();
+        String monthlyPayment= formatPayment.format(rpayment);
+        System.out.println("Monthly Payment: "+ monthlyPayment);
+
     }
 }
