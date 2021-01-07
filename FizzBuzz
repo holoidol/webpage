@@ -1,0 +1,26 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+
+
+    public static void main(String[] args) {
+	// write your code here
+        Scanner fizzBuzz= new Scanner(System.in);
+        System.out.print("Number:");
+        int checkNumber = fizzBuzz.nextInt();
+
+        if (checkNumber%5==0 && !(checkNumber%3==0)){
+            System.out.println("Fizz");
+        }
+        if (checkNumber%3==0 && !(checkNumber%5==0)){
+            System.out.println("Buzz");
+        }
+        if (checkNumber%3==0 && checkNumber%5==0){
+            System.out.println("FizzBuzz");
+        }
+        if (!(checkNumber%3==0) && !(checkNumber%5==0)){
+            System.out.println(checkNumber);
+        }
+
+    }
+}
