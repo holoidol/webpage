@@ -1,0 +1,27 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+
+
+    public static void main(String[] args) {
+	//active scanner first
+        Scanner numberInput=new Scanner(System.in);
+        System.out.println("What operation do you want to do? Multiplication?");
+        String command=numberInput.next();
+        String lowerCommand=command.toLowerCase();
+        //setting up 2 variables
+        double a=0;
+        double b=0;
+        if (lowerCommand.equals("multiplication")){
+            System.out.println("Enter your 2 variables");
+            System.out.print("First one: ");
+            a=numberInput.nextDouble();
+            System.out.print("Second one:");
+            b=numberInput.nextDouble();
+            System.out.print("Answer: ");
+            System.out.println(a*b);
+        }
+
+
+    }
+}
