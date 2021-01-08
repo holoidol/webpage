@@ -1,22 +1,54 @@
+package com.company;
 import java.text.NumberFormat;
 import java.util.Scanner;
 public class Main {
 
 
     public static void main(String[] args) {
-        // write your code here
-
-        Scanner scannerMortgage= new Scanner(System.in);
-        System.out.print("Period in Months: ");
-        int years = scannerMortgage.nextInt();
-
+        // activate scanner
+        Scanner scannerMortgage = new Scanner(System.in);
+        //year loop
+        final int maxYear=30;
+        final int minYear=1;
+        int years = 0;
+        while (years<minYear || years>maxYear){
+            System.out.print("Period in Years: ");
+            years= scannerMortgage.nextInt();
+            if (years<minYear || years>maxYear){
+                System.out.println("Year need to be between 1 and 30 years");
+            }
+        }
+        //converting year to months
         int n = years * 12;
-        System.out.print("Rate: ");
-        double percentrate = scannerMortgage.nextDouble();
 
-        double rate = percentrate/100/12;
-        System.out.print("Principal: ");
-        int principal= scannerMortgage.nextInt();
+
+        //rate
+        final int maxRate=30;
+        final int minRate=0;
+        double percentrate=50;
+        while (percentrate<minRate || percentrate>=maxRate){
+            System.out.print("Rate: ");
+            percentrate = scannerMortgage.nextDouble();
+            if (percentrate<minRate || percentrate>maxRate){
+                System.out.println("Rate needs to be greater than 0 and less or equal than 30");
+            }
+        }
+
+        double rate = percentrate / 100 / 12;
+
+        //principal section
+        int principal = 0;
+        final int maxPrincipal=1_000_000;
+        final int minPrincipal=1_000;
+        //validation for principal
+        while (principal<minPrincipal || principal>maxPrincipal){
+            System.out.print("Principal: ");
+            principal = scannerMortgage.nextInt();
+            if (principal<minPrincipal || principal>maxPrincipal){
+                System.out.println("Loan has to be between 1000 and 1,000,000");
+            }
+        }
+
 
         //rate needs to be divided by 100 and 12(months)
 
