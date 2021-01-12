@@ -1,0 +1,19 @@
+public static String getDurationString (long minutes, long seconds){
+        if (minutes >=0 || (seconds>=0 && seconds <=59)){
+            long hours = minutes/60;
+            long remainMinutes= minutes%60;
+            return "hh:" +hours+"  mm:" +remainMinutes+"  ss:"+seconds;
+        } else {
+            return "Invalid Value";
+        }
+    }
+    
+    public static String getDurationString (long seconds){
+        if (seconds<0){
+            return "Invalid Value";
+        } else {
+            long minutes=seconds/60;
+            long remainSeconds=seconds%60;
+            return getDurationString(minutes,remainSeconds);
+        }
+    }
