@@ -1,0 +1,13 @@
+//MegaBytes Converter
+public class MegaBytesConverter {
+ public static void printMegaBytesAndKiloBytes(int kiloBytes){
+     if (kiloBytes<0){
+         System.out.println("Invalid Value");
+     }
+     else {
+         int megaByteWhole=kiloBytes/1024;
+         int megaByteDecimal=kiloBytes%1024;
+         System.out.println(kiloBytes+" KB = "+megaByteWhole+" MB and "+megaByteDecimal+" KB");
+     }
+ }
+}
