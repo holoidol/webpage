@@ -1,0 +1,43 @@
+package com.company;
+
+public class Bank{
+    private int accountNumber;
+    private double balance;
+    private String customerName;
+    private  String email;
+    private int phoneNumber;
+
+    public void setAccountNumber(int acctNumber){
+        this.accountNumber=acctNumber;
+    }
+    public int returnAccountNumber(){
+        return this.accountNumber;
+    }
+    public void setBalance(double Balance){
+        this.balance=Balance;
+    }
+    public double returnBalance(){
+        return this.balance;
+    }
+    public void setName(String Name){
+        this.customerName=Name;
+    }
+    public String returnName(){
+        return this.customerName;
+    }
+    public void setEmail(String Email){
+        this.email=Email;
+    }
+    public String returnEmail(){
+        return this.email;
+    }
+    public void setPhoneNumber(int Phone){
+        this.phoneNumber=Phone;
+    }
+    public int returnPhone(){
+        return this.phoneNumber
+    }
+}
+
+
+
