@@ -1,0 +1,213 @@
+package com.JZdigits;
+
+import java.util.ArrayList;
+
+public class GroceryList {
+    private ArrayList<String> groceryList= new ArrayList<>();
+
+    public void addGroceryItem(String item){
+        groceryList.add(item);
+    }
+
+    public void printGroceryList(){
+        System.out.println("You have "+ groceryList.size()+ " items.");
+        for (int i=0; i<groceryList.size();i++){
+            System.out.println((i+1)+". "+ groceryList.get(i));
+        }
+    }
+
+    public void modifyGroceryItem(int position, String item){
+        groceryList.set(position,item);
+        System.out.println("You added "+item+" to "+ position);
+    }
+
+    public void removeGrocerItem(int position){
+        String item=groceryList.get(position);
+        groceryList.remove(position);
+    }
+
+    public String findItem(String searchItem){
+        boolean exists=groceryList.contains(searchItem);
+        int position=groceryList.indexOf(searchItem);
+        if(position>=0){
+            return groceryList.get(position);
+        }
+        return null;
+    }
+
+
+
+}
+
+////Setting up static methods: print, scanner
+    public static int[] readIntegers(int number){
+        int [] array=new int[number];
+
+        for (int i=0; i<array.length;i++){
+            System.out.println("Enter your integers here: ");
+            array[i]= scanner.nextInt();
+
+        }
+        return array;
+    }
+
+    public static void reverse(int[] array){
+
+        int maxLength=array.length-1;
+        int halfLength=array.length/2;
+        for (int i=0; i<halfLength;i++){
+            int temp=array[i];
+            array[i]=array[maxLength-i];
+            array[maxLength-i]=temp;
+        }
+
+    }
+
+
+    public static void findMin(int[] array){
+        int[] copied=new int[array.length];
+        for (int i=0;i<array.length;i++){
+            copied[i]=array[i];
+        }
+        for (int i=0; i<copied.length; i++){
+            for (int j=i+1; j< copied.length;j++){
+                if (copied[i]>copied[j]){
+                    int temp=copied[i];
+                    copied[i]=copied[j];
+                    copied[j]=temp;
+                }
+            }
+        }
+        System.out.println("Minimum is "+copied[0]);
+    }
+
+
+
+
+    public static int[] intRay(int enterIT) {
+        System.out.println("Enter " +enterIT +" values here: ");
+        int[] values=new int[enterIT];
+
+        for (int i=0;i< values.length;i++){
+            values[i]=scanner.nextInt();
+        }
+        return values;
+    }
+
+    public static void arrayAvg(int[] array){
+        int sum=0;
+        for (int i=0; i<array.length;i++){
+            sum+=array[i];
+        }
+        double avg=(double) sum/(double) array.length;
+        System.out.println("Average of your array is: "+ avg);
+    }
+
+    public static int[] getIntegers(int number){
+        System.out.println("Enter "+number+ " integers here: ");
+        int[] array=new int[number];
+        for (int i=0; i< array.length;i++){
+            array[i]= scanner.nextInt();
+        }
+        return array;
+    }
+
+    public static void printArray(int[] array){
+        for(int i=0; i< array.length;i++){
+            System.out.println("Array index "+ i+ " value is "+ array[i]);
+        }
+    }
+
+    public static int[] sortIntegers(int[] array){
+        int[] copiedRay=new int[array.length];
+        for (int i=0;i< copiedRay.length;i++){
+            copiedRay[i]=array[i];
+        }
+        for (int i=0; i<copiedRay.length; i++){
+            for (int j=i+1; j< copiedRay.length;j++){
+                if(copiedRay[i]<copiedRay[j]){
+                    int temp=copiedRay[i];
+                    copiedRay[i]=copiedRay[j];
+                    copiedRay[j]=temp;
+                }
+            }
+        }
+        return copiedRay;
+    }
+
+    This is for grocery
+ public static void printInstructions(){
+    System.out.println("\n Press ");
+    System.out.println("\t 0-to print choice option");
+    System.out.println("\t 1-to print the list of grocery items");
+    System.out.println("\t 2-to add an item to the list");
+    System.out.println("\t 3-to modify an item in the list");
+    System.out.println("\t 4-to remove an item from the list");
+    System.out.println("\t 5-to search the item in the list");
+    System.out.println("\t 6-to quit");
+}
+
+public static void addItem(){
+    System.out.println("Please enter grocery item: ");
+    groceryList.addGroceryItem(scanner.nextLine());
+}
+
+public static void modifyItem(){
+    System.out.println("Enter item number: ");
+    int itemNumber= scanner.nextInt();
+    scanner.nextLine();
+    System.out.println("Enter replacement item: ");
+    String item=scanner.nextLine();
+    groceryList.modifyGroceryItem(itemNumber-1, item);
+}
+
+public static void removeItem(){
+    System.out.println("Enter item number");
+    int itemRemove=scanner.nextInt();
+    scanner.nextLine();
+    groceryList.removeGrocerItem(itemRemove-1);
+}
+
+public static void searchForItem(){
+    System.out.println("Item to search for: ");
+    String searchItem=scanner.nextLine();
+    if(groceryList.findItem(searchItem)!=null){
+        System.out.println("Found "+ searchItem+" in grocery list");
+    } else {
+        System.out.println(searchItem+ "is not in the list");
+    }
+}
+
+////Initiating in Main
+            boolean quit=false;
+                int choice =0;
+                printInstructions();
+                while(!quit){
+                    System.out.println("Enter your choice: ");
+                    choice=scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch(choice){
+                        case 0:
+                            printInstructions();
+                            break;
+                        case 1:
+                            groceryList.printGroceryList();
+                            break;
+                        case 2:
+                            addItem();
+                            break;
+                        case 3:
+                            modifyItem();
+                            break;
+                        case 4:
+                            removeItem();
+                            break;
+                        case 5:
+                            searchForItem();
+                            break;
+                        case 6:
+                            quit=true;
+                            break;
+                    }
+                }
