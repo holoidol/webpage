@@ -1,0 +1,102 @@
+public class Contacts{
+    private String name;
+    private String phone;
+
+
+    public Contacts(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public String getContactName() {
+        return name;
+    }
+
+    public String getContactPhone() {
+        return phone;
+    }
+
+    public static Contacts createContact(String name, String phone){
+        return new Contacts(name,phone);
+    }
+
+}
+
+import java.util.ArrayList;
+
+public class MobilePhone {
+    private ArrayList<Contacts> contactList=new ArrayList<>();
+
+    public void addContact(Contacts contact){
+        if (findContact(contact.getContactName())>=0){
+            System.out.println("This is an existing contact");
+        } else {
+            contactList.add(contact);
+            System.out.println("Added contact"+ contact);
+        }
+    }
+
+
+
+    private int findContact(Contacts contact){
+        return this.contactList.indexOf(contact);
+    }
+
+    private int findContact(String contact){
+        for (int i=0; i<this.contactList.size(); i++){
+            Contacts contact1=this.contactList.get(i);
+            if (contact1.getContactName().equals(contact)){
+                return i;
+            }
+        } return -1;
+
+    }
+
+    public void updateContact(Contacts oldContact, Contacts newContact){
+        if(findContact(oldContact)<0){
+            System.out.println("This contact doesn't exist in current book");
+        } else if(findContact(newContact.getContactName())>=0){
+            System.out.println("This is going to be a duplicated contact");
+        }
+        else  {
+            this.contactList.set(findContact(oldContact),newContact);
+            System.out.println("You modified "+ oldContact.getContactName()+" the new contact is "+ newContact.getContactName());
+        }
+    }
+
+    public void removeContact(Contacts contact){
+        if(findContact(contact)>=0){
+            contactList.remove(findContact(contact));
+            System.out.println("You removed "+ contact.getContactName()+" successfully!");
+        } else {
+            System.out.println("This contact doesn't exist, therefore cannot delete");
+        }
+    }
+
+    public void printContacts(){
+        System.out.println("Printing contacts: ");
+        for (int i=0; i<this.contactList.size(); i++){
+            System.out.println("Contact number "+ (i+1)+" "+this.contactList.get(i).getContactName()+ "; This contact's number is " +
+                    this.contactList.get(i).getContactPhone());
+        }
+    }
+
+    public String queryContact(Contacts contact){
+        if(findContact(contact)>=0){
+            return contact.getContactName();
+        } else {
+            return null;
+        }
+    }
+
+    public Contacts queryContact(String name){
+        int position=findContact(name);
+        if(position>=0){
+            return this.contactList.get(position);
+        } else {
+            return null;
+        }
+    }
+
+
+}
